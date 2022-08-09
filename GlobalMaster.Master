@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/GlobalMaster.Master.cs" Inherits="DBFood.GlobalMaster" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" style="height: 100%">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no" />
+    <title></title>
+    <link rel="icon" href="cgi-bin/img/imgLogo.png" />
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script type="text/javascript" src=<%="'cgi-bin/general/jquery.js?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%>></script>
+    <script type="text/javascript" src=<%="'cgi-bin/general/bootstrap.js?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%>></script>
+    <script type="text/javascript" src=<%="'cgi-bin/general/editors.js?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%>></script>
+    <script type="text/javascript" src=<%="'cgi-bin/fontawesome/fontawesome.js?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%>></script>
+    <script type="text/javascript" src=<%="'cgi-bin/datatable/datatables.js?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%>></script>
+
+    <link rel="stylesheet" href=<%="'cgi-bin/general/bootstrap.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
+    <link rel="stylesheet" href=<%="'cgi-bin/fontawesome/fontawesome.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
+    <link rel="stylesheet" href=<%="'cgi-bin/datatable/datatables.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
+</head>
+
+<body style="height: 100%">
+
+    <form id="mainForm" runat="server" style="height: 100%">
+        <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+
+
+        <nav class="navbar navbar-expand navbar-dark bg-dark ">
+
+
+       
+      
+       
+
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.aspx">    Home  <i class="far fa-house"></i></a>
+        </li>
+               <li class="nav-item">
+         
+          <a class="nav-link" href="insert.aspx">Insert product<i class="far fa-plus-circle"></i></a>
+        </li>
+
+                  
+        <li class="nav-item">
+         
+          <a class="nav-link" href="about.aspx">About  <i class="far fa-plus-circle"></i></a>
+        </li>
+                    <li class="nav-item position-absolute end-0">
+                
+          <asp:LinkButton ID="currentUser" runat="server" CssClass="nav-link" ><i class="far fa-user">            </i></asp:LinkButton>
+            
+        </li>
+          <li class="nav-item position-absolute end-0">
+                
+          <asp:LinkButton ID="wBtnLogin" runat="server" CssClass="nav-link" OnClick="wBtnLogin_Click" >Login  <i class="far fa-sign-in">            </i></asp:LinkButton>
+            
+        </li>
+                  
+          <li class="nav-item position-absolute end-0">
+
+          <asp:LinkButton ID="wBtnLogout" runat="server" CssClass="nav-link" OnClick="wBtnLogout_Click" >Logout<i class="far fa-sign-out">             </i></asp:LinkButton>
+            
+        </li>
+         
+          </ul>
+        </div>
+           
+    </nav>
+
+        <div class="container">
+
+            <asp:ContentPlaceHolder ID="BodyContent" runat="server" ClientIDMode="Static">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+
+</body>
+</html>
+
