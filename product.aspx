@@ -50,17 +50,18 @@
 
 
                 <br />
-              
-                
+
+
                 <br />
-                <asp:Label ID="ingredients" runat="server"><b>Ingredients:</b> <br></asp:Label>
-
-                
-
+                <b>Ingredients:</b> 
+                <ul id="ingredients"></ul>
 
 
 
-                </div>
+
+
+
+            </div>
 
             <div class="col-sm-6">
 
@@ -72,191 +73,181 @@
 
         </div>
 
-            <br />
+        <br />
 
 
-
-
-            </div>
-
-    <div class="row">
-
-        <div  class="col-sm-6">
-            <div id="suitable" class="row">
-
-                </div>"
-
-     </div>
-
-           
-
-
-                <br />
-
-        <div class="col-sm-6">
-              <div id="scores" class="row">
-
-
-                
-        </div>
-
-
-            </div>
-
-     </div>
-
-    <br />
-        <caption>Nutritional Facts (As sold for 100 g / 100 ml)</caption>
-           <table id="nf" class="table" style="border-width:1px">
-           
-           </table>
-      
-
-    <div id="mostrar"></div>
 
 
     </div>
 
+    <div class="row">
+
+        <div class="col-sm-6">
+            <div id="suitable" class="row">
+            </div>
+            "
+
+        </div>
+
+
+
+
+        <br />
+
+        <div class="col-sm-6">
+            <div id="scores" class="row">
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <br />
+    <caption>Nutritional Facts (As sold for 100 g / 100 ml)</caption>
+    <table id="nf" class="table" style="border-width: 1px">
+    </table>
+
+
+    <div id="mostrar"></div>
+
+
+
     <script>
 
-        function iconValues(jsonData){
 
-            jsonData = JSON.parse(jsonData);            
-console.log(jsonData);
+ 
+        function _showProduct(jsonData) {
 
-   if ((jsonData.glutenfree)==true){
-
-$("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\glutenfree.png" width="80px"> </div>');
-}
+          
 
 
+            //show basic info
 
-
-   if ((jsonData.palmoil)==false){
-
-$("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\palmoil.png" width="100px"> </div>');
-}
-
-if (jsonData.vegetarian==true && jsonData.vegan==false){
-
-$("#suitable").append ('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\vegetarian.png" width="80px"> </div>');
-
-}
-
-   if ((jsonData.vegan)==true){
-
-$("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\vegan.png" width="80px"> </div>');
-}
-
-
-let nutriscore_img;
-
-switch(jsonData.nutriscore){
-
-case 'A':
-  nutriscore_img= "nutriscoreA";
-break;
-case 'B':
-  nutriscore_img= "nutriscoreB";
-break;
-
-case 'C':
-  nutriscore_img="nutriscoreC";
-break;
-
-case 'D':
-  nutriscore_img="nutriscoreD";
-break;
-
-case 'E':
-  nutriscore_img="nutriscoreE";
-
-}
-
-
-
-$("#scores").append('<div id="nutriscoreDiv" class="col-sm-4"></div>')
-
-$("#nutriscoreDiv").append('<img src="cgi-bin\\pics\\labels\\'+nutriscore_img+'.png" class="w-100">');
-
-
-let ecoscore_img;
-
-
-switch(jsonData.ecoscore){
-
-case 'A':
-ecoscore_img= "ecoscoreA";
-break;
-case 'B':
-ecoscore_img= "ecoscoreB";
-break;
-
-case 'C':
-ecoscore_img="ecoscoreC";
-break;
-
-case 'D':
-ecoscore_img="ecoscoreD";
-break;
-
-case 'E':
-ecoscore_img="ecoscoreE";
-
-}
-
-
-$("#scores").append('<div id="ecoscoreDiv" class="col-sm-4"></div>')
-
-$("#ecoscoreDiv").append('<img src="cgi-bin\\pics\\labels\\'+ecoscore_img+'.png" class="w-100">');
-
-
-
-let novagroup_img;
-
-
-switch(jsonData.novagroup){
-
-case '1':
-novagroup_img= "novagroup1";
-break;
-case '2':
-novagroup_img= "novagroup2";
-break;
-
-case '3':
-novagroup_img="novagroup3";
-break;
-
-case '4':
-novagroup_img="novagroup4";
-
-
-}
-
-/*
-$("#scores").append('<div id="novagroupDiv" class="col-sm-4"></div>')
-
-$("#novagroupDiv").append('<img src="cgi-bin\\pics\\labels\\'+novagroup_img+'.png" class="w-100">');
-return;*/
-           
-        };
-
-
-        //tabla IAGO
-
-        function nf_table(nf_obj) {
-            jsonData = JSON.parse(nf_obj);
+            jsonData = JSON.parse(jsonData);
             console.log(jsonData);
 
+            $("#name").text(jsonData.name);
+            $("#code").text(jsonData.code);
+            $("#description").text(jsonData.description);
+            $("#quantity").text(jsonData.quantity);
+            $("units").text(jsonData.unit);
+            $("brand").text(jsonData.brand);
+            $("#owner").text(jsonData.owner);
+            $("#iva").text(jsonData.iva);
+            $("#embcode").text(jsonData.embcode);
 
+
+
+
+
+            if ((jsonData.glutenfree) == true) {
+
+                $("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\glutenfree.png" width="80px"> </div>');
+            }
+
+            if ((jsonData.palmoil) == false) {
+
+                $("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\palmoil.png" width="100px"> </div>');
+            }
+
+            if (jsonData.vegetarian == true && jsonData.vegan == false) {
+
+                $("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\vegetarian.png" width="80px"> </div>');
+
+            }
+
+            if ((jsonData.vegan) == true) {
+
+                $("#suitable").append('<div class="col-sm-3"><img src="cgi-bin\\pics\\labels\\vegan.png" width="80px"> </div>');
+            }
+
+            let nutriscore_img;
+
+            switch (jsonData.nutriscore) {
+
+                case 'A':
+                    nutriscore_img = "nutriscoreA";
+                    break;
+                case 'B':
+                    nutriscore_img = "nutriscoreB";
+                    break;
+
+                case 'C':
+                    nutriscore_img = "nutriscoreC";
+                    break;
+
+                case 'D':
+                    nutriscore_img = "nutriscoreD";
+                    break;
+
+                case 'E':
+                    nutriscore_img = "nutriscoreE";
+
+            }
+
+
+            $("#scores").append('<div id="nutriscoreDiv" class="col-sm-4"></div>')
+
+            $("#nutriscoreDiv").append('<img src="cgi-bin\\pics\\labels\\' + nutriscore_img + '.png" class="w-100">');
+
+            let ecoscore_img;
+
+            switch (jsonData.ecoscore) {
+
+                case 'A':
+                    ecoscore_img = "ecoscoreA";
+                    break;
+                case 'B':
+                    ecoscore_img = "ecoscoreB";
+                    break;
+
+                case 'C':
+                    ecoscore_img = "ecoscoreC";
+                    break;
+
+                case 'D':
+                    ecoscore_img = "ecoscoreD";
+                    break;
+
+                case 'E':
+                    ecoscore_img = "ecoscoreE";
+
+            }
+
+
+            $("#scores").append('<div id="ecoscoreDiv" class="col-sm-4"></div>')
+
+            $("#ecoscoreDiv").append('<img src="cgi-bin\\pics\\labels\\' + ecoscore_img + '.png" class="w-100">');
+
+
+            let novagroup_img;
+            switch (jsonData.novagroup) {
+
+                case '1':
+                    novagroup_img = "novagroup1";
+                    break;
+                case '2':
+                    novagroup_img = "novagroup2";
+                    break;
+
+                case '3':
+                    novagroup_img = "novagroup3";
+                    break;
+
+                case '4':
+                    novagroup_img = "novagroup4";
+
+
+            }
+
+            //showwwwwwwwwwwwwww novagroup
 
             let caption = $('<caption>').text('As sold for 100 g / 100 ml');
             $('#nf').append(caption);
 
- 
             let thead = $('<thead>');
-           
+
             $(thead).append($('<th>').text('Energy'));
             $(thead).append($('<th>').text('Fat'));
             $(thead).append($('<th>').text('Satured fat'));
@@ -267,53 +258,56 @@ return;*/
             $(thead).append($('<th>').text('Alcohol'));
             $(thead).append($('<th>').text('Others'));
 
-            
+
             $('#nf').append(thead);
 
-            
+
             let tbody = $('<tbody>');
-      
+
             let tr = $('<tr>');
-         
-            let td = $('<td>').text(jsonData.energy);
+
+            let td = $('<td>').text(jsonData.nutritionalFacts.energy);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.fat);
+            td = $('<td>').text(jsonData.nutritionalFacts.fat);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.saturedfat);
+            td = $('<td>').text(jsonData.nutritionalFacts.saturedfat);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.carbohydrates);
+            td = $('<td>').text(jsonData.nutritionalFacts.carbohydrates);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.sugars);
+            td = $('<td>').text(jsonData.nutritionalFacts.sugars);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.fiber);
+            td = $('<td>').text(jsonData.nutritionalFacts.fiber);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.proteins);
+            td = $('<td>').text(jsonData.nutritionalFacts.proteins);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.alcohol);
+            td = $('<td>').text(jsonData.nutritionalFacts.alcohol);
             $(tr).append(td);
-            td = $('<td>').text(jsonData.extras);
+            td = $('<td>').text(jsonData.nutritionalFacts.extras);
             $(tr).append(td);
 
             $(tbody).append(tr);
             $('#nf').append(tbody);
 
-
-        }
-
+         
 
 
+            
 
 
-        function showIngredients(ing_obj) {
+            $.each(jsonData.ingredients, function () {
+                $("#ingredients").append('<li>'+this.name+' '+this.description+'</li>')
+            });
 
 
-            jsonData = JSON.parse(ing_obj);
-            console.log(jsonData);
-
-     
+            $("#productimage").attr('src', 'cgi-bin/pics/' + jsonData.image);
 
 
         }
+
+
+
+
+
     </script>
 
 

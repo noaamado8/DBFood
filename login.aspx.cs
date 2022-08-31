@@ -13,49 +13,50 @@ namespace DBFood
 {
     public partial class login : System.Web.UI.Page
     {
-      
+        GenericResponse response;
+        Engine engine = new Engine();
         protected void Page_Load(object sender, EventArgs e)
         {
-            walertdanger.Visible = false;
-            walertsuccess.Visible = false;
-        }
 
+
+        }
+        protected void Page_Unload(object sender, EventArgs e)
+        {
+
+
+        }
         protected void login_Click(object sender, EventArgs e)
         {
-            var usuario = email.Text;
-            var contrasinal = password.Text;
-            DataBase con = new DataBase();
+            string _email = email.Text;
+            string _password = password.Text;
+            User user;
 
-            var stm = "SELECT email,passwordHash,idusers from users";
-            MySqlCommand cmd = new MySqlCommand(stm, con.conexion());
-            cmd.Prepare();
-            MySqlDataReader lista = cmd.ExecuteReader();
-            string us = "";
-            var ps = "";
-            int id = -1;
-            while (lista.Read())
+            response = engine._login(_email, _password);
+
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), DateTime.Now.ToString("yyyyMMddhhmmss") + "a", "console.log(" + response + ");", true);
+            /*if (response.error != "")
             {
-
-                us = lista.GetString(0);
-                ps = lista.GetString(1);
-                id = lista.GetInt32(2);
-            }
-
-            if (usuario == us && contrasinal == ps)
-            {
-                walertsuccess.Text = "Benvida/Benvido "+us;
-                walertsuccess.Visible = true;
-                Session["user"]=us;
-                Session["id_user"] = id;
-                Response.Redirect("index.aspx");
+                //show exception
             }
             else
-            {
-                walertdanger.Text = "Usuario ou contrasinal incorrectos";
-                walertdanger.Visible = true;
+            {*/
+                if (response.operation_success)
+                {
+                    user = (User)response.obj;
 
+                  
+                    
+                    Session["user_email"] = user.email;
+                    Session["id_user"] = user.id;
+                    Response.Redirect("myproducts.aspx");
 
             }
+            else
+                {
+                    walertdanger.Text = "Usuario ou contrasinal incorrectos";
+                    walertdanger.Visible = true;
+                };
+            
         }
     }
 }

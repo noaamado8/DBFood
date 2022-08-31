@@ -10,42 +10,24 @@
 namespace DBFood {
     
     
-    public partial class login {
+    public partial class myproducts {
         
         /// <summary>
-        /// Controllo email.
+        /// Controllo productCodeDel.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox email;
+        protected global::System.Web.UI.WebControls.TextBox productCodeDel;
         
         /// <summary>
-        /// Controllo password.
+        /// Controllo wBtnDel.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
-        
-        /// <summary>
-        /// Controllo submit.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit;
-        
-        /// <summary>
-        /// Controllo walertdanger.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label walertdanger;
+        protected global::System.Web.UI.WebControls.Button wBtnDel;
     }
 }

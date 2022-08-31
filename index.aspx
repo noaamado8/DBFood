@@ -29,6 +29,8 @@
 
     <script>
 
+
+
         function genDTProducts(jsonData) {
 
             jsonData = JSON.parse(jsonData);
@@ -58,13 +60,15 @@
                             data: null,
                             render: function (data, type, row) {
                                 if (type === "display") {
-                                    data = '<a href="product.aspx?code='+ row.code+'"><button type="button" class="btn btn-dark" > <i class="far fa-plus-circle"></button></a>';
+                                    data = '<a href="product.aspx?code=' + row.code + '"><button type="button" class="btn btn-info" ><i class="far fa-info-circle"></i> </button></a>';
                                 }
 
                                 return data;
                             }
 
                         }
+
+
 
                     ],
 

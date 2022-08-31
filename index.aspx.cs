@@ -11,45 +11,31 @@ namespace DBFood
 {
     public partial class index : System.Web.UI.Page
     {
+        GenericResponse response;
+        Engine engine = new Engine();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
-            DataBase conect = new DataBase();
-
-            var stm = "SELECT _code, name, iva from products LIMIT 1000";
-            var cmd = new MySqlCommand(stm, conect.conexion());
-            cmd.Prepare();
-            MySqlDataReader dbRecords = cmd.ExecuteReader();
-
-
-            Product product;
-            List<Product> productList = new List<Product>();
-            JavaScriptSerializer mySer = new JavaScriptSerializer();
-
-            string stringSerialized;
-
-
-            while (dbRecords.Read())
+            response = engine._listProducts();
+            ScriptManager.RegisterStartupScript(Page, Page.GetType(), DateTime.Now.ToString("yyyyMMddhhmmss") + "a", "console.log('"+ response.error +"');", true);
+            if (response.error != "")
             {
-
-                product= new Product();
-                product.code=dbRecords.GetString(0);
-                product.description = dbRecords.GetString(1).Replace("\\", "").Replace("/", "");//Nn me deixa quitar o Replace non sei pq
-                product.iva = dbRecords.GetString(2);
-            
-
-                productList.Add(product);
+                //show exception
             }
-
-            stringSerialized = mySer.Serialize(productList);
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), DateTime.Now.ToString("yyyyMMddhhmmss"), "genDTProducts('" + stringSerialized + "');", true);
-
+            else
+            {
+                if (response.obj != null)
+                {
+                    //serialize
+                    string stringSerialized = engine._serialize(response.obj);
+                    ScriptManager.RegisterStartupScript(Page, Page.GetType(), DateTime.Now.ToString("yyyyMMddhhmmss"), "genDTProducts('" + stringSerialized + "');", true);
+                }
+                else
+                {
+                    //class return is null
+                }
+            }
         }
-
-
-
-      
-
     }
 }

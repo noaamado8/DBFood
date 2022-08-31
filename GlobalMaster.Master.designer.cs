@@ -31,6 +31,33 @@ namespace DBFood {
         protected global::System.Web.UI.HtmlControls.HtmlForm mainForm;
         
         /// <summary>
+        /// Controllo home.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton home;
+        
+        /// <summary>
+        /// Controllo about.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton about;
+        
+        /// <summary>
+        /// Controllo myproductslist.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton myproductslist;
+        
+        /// <summary>
         /// Controllo currentUser.
         /// </summary>
         /// <remarks>

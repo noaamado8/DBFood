@@ -21,17 +21,13 @@
                 CssClass="btn btn-primary"
                 runat="server" />
 
-            <div class="alert alert-success " type="alert" role="alert">
-                <asp:Label ID="walertsuccess" runat="server"></asp:Label>
-            </div>
-            <div class="alert alert-danger " type="alert" role="alert">
+           
+         
                 <asp:Label ID="walertdanger" runat="server"></asp:Label>
-            </div>            
+                      
           <!--  <span>Non estás rexistrado? <a href="register.aspx">Rexístrate!</a></span>
         -->
-
-     
-
+  
         </div>
 
 </asp:Content>

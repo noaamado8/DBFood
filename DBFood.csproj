@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.aspx" />
+    <Content Include="myproducts.aspx" />
     <Content Include="product.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -95,7 +96,7 @@
       <DependentUpon>about.aspx</DependentUpon>
     </Compile>
     <Compile Include="App-Code\Classes.cs" />
-    <Compile Include="App-Code\DataBase.cs" />
+    <Compile Include="App-Code\engine.cs" />
     <Compile Include="GlobalMaster.Master.cs">
       <DependentUpon>GlobalMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="insert.aspx.designer.cs">
       <DependentUpon>insert.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="myproducts.aspx.cs">
+      <DependentUpon>myproducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="myproducts.aspx.designer.cs">
+      <DependentUpon>myproducts.aspx</DependentUpon>
     </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>

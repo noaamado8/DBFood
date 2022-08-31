@@ -21,6 +21,19 @@
     <link rel="stylesheet" href=<%="'cgi-bin/general/bootstrap.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
     <link rel="stylesheet" href=<%="'cgi-bin/fontawesome/fontawesome.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
     <link rel="stylesheet" href=<%="'cgi-bin/datatable/datatables.css?version="+ DateTime.Now.ToString("yyyyMMddhhmmss") +"'"%> />
+
+ 
+    <style>
+
+        .nav-link {
+
+            color:white;
+            margin:4px;
+
+        }
+
+    </style>
+        
 </head>
 
 <body style="height: 100%">
@@ -30,42 +43,49 @@
 
 
 
-        <nav class="navbar navbar-expand navbar-dark bg-dark ">
+        <nav class="navbar navbar-expand" style="background-image:url('cgi-bin\\pics\\backgrounds\\navbar.jpg')">
 
 
        
       
        
 
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+             <div class="collapse navbar-collapse" id="navbarSupportedContent" >
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.aspx">    Home  <i class="far fa-house"></i></a>
-        </li>
-               <li class="nav-item">
-         
-          <a class="nav-link" href="insert.aspx">Insert product<i class="far fa-plus-circle"></i></a>
-        </li>
 
+          <asp:LinkButton ID="home" runat="server" CssClass="nav-link btn btn-dark" OnClick="wBtnHome_Click" >Home  <i class="far fa-house">   </i> </asp:LinkButton>
+                        
+                         </li>
+              
                   
         <li class="nav-item">
-         
-          <a class="nav-link" href="about.aspx">About  <i class="far fa-plus-circle"></i></a>
+        
+          <asp:LinkButton ID="about" runat="server" CssClass="nav-link btn btn-dark" OnClick="wBtnAbout_Click" >About</asp:LinkButton>
+
+
         </li>
-                    <li class="nav-item position-absolute end-0">
+
+           <li class="nav-item">
+           <asp:LinkButton ID="myproductslist" runat="server" CssClass="nav-link btn btn-dark" OnClick="wBtnMyProductsList_Click" >My product list </asp:LinkButton>
+       
+        </li>
+
+
+                    <li class="nav-item  ">
                 
-          <asp:LinkButton ID="currentUser" runat="server" CssClass="nav-link" ><i class="far fa-user">            </i></asp:LinkButton>
+          <asp:LinkButton ID="currentUser" runat="server" CssClass="nav-link" ><i class="far fa-user">            </asp:LinkButton>
             
         </li>
           <li class="nav-item position-absolute end-0">
                 
-          <asp:LinkButton ID="wBtnLogin" runat="server" CssClass="nav-link" OnClick="wBtnLogin_Click" >Login  <i class="far fa-sign-in">            </i></asp:LinkButton>
+          <asp:LinkButton ID="wBtnLogin" runat="server" CssClass="nav-link btn btn-dark" OnClick="wBtnLogin_Click" >Login  <i class="far fa-sign-in"> </i> </asp:LinkButton>
             
         </li>
                   
           <li class="nav-item position-absolute end-0">
 
-          <asp:LinkButton ID="wBtnLogout" runat="server" CssClass="nav-link" OnClick="wBtnLogout_Click" >Logout<i class="far fa-sign-out">             </i></asp:LinkButton>
+          <asp:LinkButton ID="wBtnLogout" runat="server" CssClass="nav-link btn btn-dark" OnClick="wBtnLogout_Click" >Logout   <i class="far fa-sign-out">  </i>   </asp:LinkButton>
             
         </li>
          
